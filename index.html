@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/bootstrap-4.6.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <script src="./js/jquery-1.8.1.min.js"></script>
+    <script src="./js/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="./js/jquery-validation/dist/jquery.validate.extend.js"></script>
+    <script src="./js/jquery-validation/dist/additional-methods.js"></script>
+
+    <title>Jquery Validtion X Bootstrap Sample</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Content here -->
+        <form id="form1">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" id="exampleFormControlInput1" class="form-control" required
+                    placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="custom-select required" id="exampleFormControlSelect1" name="exampleFormControlSelect1">
+                    <option value="">請選擇</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input required" type="checkbox" value="" id="defaultCheck1"
+                        name="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">我同意</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" required
+                        value="option1">
+                    <label class="form-check-label" for="exampleRadios1">
+                        Default radio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" required
+                        value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Second default radio
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="exampleFormControlTextarea1"
+                    rows="3" required></textarea>
+            </div>
+            <input type="button" id="submitButton" class="btn btn-primary" value="Submit" />
+        </form>
+    </div>
+</body>
+
+<script>
+    $('#submitButton').on('click', function (e) {
+        e.preventDefault();
+
+        var valid = $('#form1').valid();
+        console.log(valid);
+        // 驗證
+        if (valid == false) {
+            return false;
+        } else {
+            console.log('ok');
+        }
+    });
+</script>
+
+</html>
