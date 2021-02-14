@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Validtion X Bootstrap Sample</title>
 
     <link rel="stylesheet" href="./css/bootstrap-4.6.0/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="./js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 
-    <script src="./js/jquery-1.8.1.min.js"></script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
     <script src="./js/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="./js/jquery-validation/dist/jquery.validate.extend.js"></script>
     <script src="./js/jquery-validation/dist/additional-methods.js"></script>
 
-    <title>Jquery Validtion X Bootstrap Sample</title>
 </head>
 
 <body>
@@ -23,14 +24,15 @@
         <!-- Content here -->
         <form id="form1">
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" id="exampleFormControlInput1" class="form-control" required
+                <label for="txtEmail">-- 文字區塊 text --</label>
+                <input type="email" id="txtEmail" name="txtEmail" class="form-control" required
                     placeholder="name@example.com">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="custom-select required" id="exampleFormControlSelect1" name="exampleFormControlSelect1">
+                <label for="selectCustom">-- 下拉選單 select --</label>
+                <select class="custom-select required" id="selectCustom" name="selectCustom">
                     <option value="">請選擇</option>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -39,33 +41,98 @@
                 </select>
             </div>
             <div class="form-group">
+                <label>-- 單選 checkbox --</label>
                 <div class="form-check">
-                    <input class="form-check-input required" type="checkbox" value="" id="defaultCheck1"
-                        name="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">我同意</label>
+                    <input class="form-check-input required" type="checkbox" value="" id="chkAgree" name="chkAgree">
+                    <label class="form-check-label" for="chkAgree">我同意</label>
                 </div>
             </div>
             <div class="form-group">
+                <label>-- 單選 radio --</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" required
+                    <input class="form-check-input" type="radio" name="radioGroup" id="radioGroup_1" required
                         value="option1">
-                    <label class="form-check-label" for="exampleRadios1">
+                    <label class="form-check-label" for="radioGroup_1">
                         Default radio
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" required
+                    <input class="form-check-input" type="radio" name="radioGroup" id="radioGroup_2" required
                         value="option2">
-                    <label class="form-check-label" for="exampleRadios2">
+                    <label class="form-check-label" for="radioGroup_2">
                         Second default radio
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="exampleFormControlTextarea1"
-                    rows="3" required></textarea>
+                <label for="textareaMsg">-- Example textarea --</label>
+                <textarea class="form-control" id="textareaMsg" name="textareaMsg" rows="3" required></textarea>
             </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label>-- checkbox X text 相依關係驗證 --</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="gogo" id="chkJoin" name="chkJoin">
+                    <label class="form-check-label" for="chkJoin">我願意參加</label>
+                    <input type="text" id="txtName" name="txtName" class="form-control" placeholder="姓名">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>-- checkbox X email 相依關係驗證 --</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="gogogo" id="chkContactWay"
+                        name="chkContactWay">
+                    <label class="form-check-label" for="chkContactWay">聯絡我</label>
+                    <input type="text" id="txtCkEmail" name="txtCkEmail" class="form-control"
+                        placeholder="email address">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>-- 複選 checkbox --</label>
+                <div class="form-check">
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="chkBaseBall" name="interest[]">
+                        <label class="form-check-label" for="chkBaseBall">棒球</label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="chkBasketBall" name="interest[]">
+                        <label class="form-check-label" for="chkBasketBall">籃球</label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="chkFootBall" name="interest[]">
+                        <label class="form-check-label" for="chkFootBall">足球</label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="chkSwim" name="interest[]">
+                        <label class="form-check-label" for="chkSwim">游泳</label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="chkSleep" name="interest[]">
+                        <label class="form-check-label" for="chkSleep">睡覺</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>-- 時間起迄驗證 --</label>
+                <div class="form-row">
+                    <div class="col-md-3 mb-3">
+                        <label for="txtDisplaySDate">起</label>
+                        <input type="text" class="form-control dev-calendar s-date" placeholder="0000-00-00" readonly
+                            name="txtDisplaySDate" id="txtDisplaySDate" value="" />
+                        <label for="txtDisplayEDate">迄</label>
+                        <input type="text" class="form-control dev-calendar e-date" placeholder="0000-00-00" readonly
+                            name="txtDisplayEDate" id="txtDisplayEDate" value="" />
+                    </div>
+                </div>
+            </div>
+
+            <label id="total" name="total"></label>
+
             <input type="button" id="submitButton" class="btn btn-primary" value="Submit" />
         </form>
     </div>
@@ -75,14 +142,103 @@
     $('#submitButton').on('click', function (e) {
         e.preventDefault();
 
-        var valid = $('#form1').valid();
-        console.log(valid);
-        // 驗證
-        if (valid == false) {
-            return false;
-        } else {
-            console.log('ok');
-        }
+        // 第一種寫法，直接submit()，集中給  $('#form1').validate 處理 (每個input獨立寫規則)
+        $('#form1').submit();
+
+        // 第二種寫法，直接在class加上已定義好的規則名稱，由 $('#form1').valid() 判定是否可以 submit;
+        // var valid = $('#form1').valid();
+        // console.log(valid);
+        // // 驗證
+        // if (valid == false) {
+        //     return false;
+        // } else {
+        //     console.log('ok');
+        // }
+    });
+
+    $.validator.addMethod("notEqualsto", function (value, element, arg) {
+        return arg != value;
+    }, "Default Error Message");
+
+    $(function () {
+        $.datepicker.regional['locale'] = {
+            dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+            dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+            dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+            monthNamesShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+            prevText: '上個月',
+            nextText: '下個月',
+            weekHeader: '週',
+            showMonthAfterYear: true,
+            dateFormat: 'yy/mm/dd',
+            //maxDate: "+0d"
+        };
+        $.datepicker.setDefaults($.datepicker.regional['locale']);
+
+        $("input.dev-calendar").datepicker({
+            //可使用下拉式選單 - 月份
+            changeMonth: true,
+            //可使用下拉式選單 - 年份
+            changeYear: true,
+            onSelect: function (dateText, event) {
+                $('#' + event.id).trigger('focusout');
+
+                var sdate = $('#' + event.id).parent().find('.s-date');
+                var edate = $('#' + event.id).parent().find('.e-date');
+                sdate.datepicker("option", "maxDate", edate.val());
+                edate.datepicker("option", "minDate", sdate.val())
+            }
+        });
+
+        $('#form1').validate({
+            ignore: '.ignore',
+            rules: {
+                txtEmail: { required: true },
+                selectCustom: { required: true, notEqualsto: "0" },
+                chkAgree: { required: true },
+                radioGroup: { required: true },
+                textareaMsg: { required: true },
+                txtName: { required: "input:checkbox[name=chkJoin]:checked" },
+                // depends 要讓 required 依照特地條件成立才驗證，使用呼叫的 depends 方法，來自訂規則
+                chkContactWay: {
+                    required: true,
+                    email: {
+                        depends: function (element) {
+                            return $('#txtCkEmail').val() == '';
+                        }
+                    }
+                },
+                txtCkEmail: {
+                    required: {
+                        depends: function (element) {
+                            return $('#chkContactWay').is(':checked');
+                        }
+                    }
+                },
+                'interest[]': { required: true },
+                txtDisplaySDate: {
+                    required: true,
+                },
+                txtDisplayEDate: {
+                    dateAfterTo: true
+                }
+            },
+            messages: {
+                txtEmail: '*請選取',
+                selectCustom: { required: '下拉選單，請選擇', notEqualsto: '請不要選擇 0 哦 ^_<' },
+
+            },
+            invalidHandler: function (form, validator) {
+                $('#total').text("尚有 " + validator.numberOfInvalids() + " 項目未填");
+            },
+            submitHandler: function (form) {
+                // 按鈕隱藏起來
+                //$('form input:submit').attr("disabled", true);
+                $('#submitButton').attr("disabled", true);
+                form.submit();
+            }
+        });
     });
 </script>
 

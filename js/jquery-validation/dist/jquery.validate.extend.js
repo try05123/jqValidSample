@@ -16,12 +16,14 @@
         errorClass: 'invalid-feedback',
         // 可以給未通過驗證的元素加效果、閃爍等。
         highlight: function (element) {
-            $(element).closest('input, select, textarea').addClass('is-invalid');
+            $(element).closest('input[type=text], input[type=email]').addClass('is-invalid');
+            //input:not([type=button]):not([type=password]):not([type=submit])
         },
         unhighlight: function (element) {
-            $(element).closest('input, select, textarea').removeClass('is-invalid');
+            $(element).closest('input[type=text], input[type=email]').removeClass('is-invalid');
         },
         //focusInvalid: false,
+        // 使用 $('#form1').valid(); 必須增加下面方式
         invalidHandler: function (form, validator) {
             if (!validator.numberOfInvalids())
                 return;
@@ -33,6 +35,12 @@
             }, 50, function () {
                 $errorObjet.focus();
             });
+
+            // var errors = validator.numberOfInvalids();
+            // if (errors) {
+            //     var top = $(validator.errorList[0].element).offset().top;
+            //     $(window).scrollTop(top - 200);
+            // }
         },
 
         // 更改錯誤資訊顯示的位置
@@ -63,8 +71,8 @@
             return true;
         }
         if (_check) {
-            var target = $(element).prevAll('input').val().replace("-", "/").replace("-", "/");
-            var _value = value.replace("-", "/").replace("-", "/");
+            var target = $(element).prevAll('input').val().replace(/-/g, "/");
+            var _value = value.replace(/-/g, "/");
             return (Date.parse(_value).valueOf() >= Date.parse(target).valueOf());
         } else {
             return _check;
